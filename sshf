@@ -1,0 +1,23 @@
+#!/usr/bin/python
+import os, sys
+
+def ssh_connect(user, host):
+    cmd = "ssh " + user + "@" + host
+    os.system(cmd)
+    pass
+
+def ssh_combine(user, part_ip):
+    if part_ip.find('.') == -1:
+        return ssh_connect(user, "192.168.3." + part_ip)
+    else:
+        return ssh_connect(user, "192.168." + part_ip)
+
+def Main():
+    if len(sys.argv) == 2:
+        return ssh_combine('root', sys.argv[1])
+    if len(sys.argv) == 3:
+        return ssh_combine(sys.argv[1], sys.argv[2])
+    print "error parameter!"
+
+if __name__ == '__main__':
+    Main()
