@@ -2,7 +2,8 @@
 import os, sys
 
 def ssh_connect(user, host):
-    cmd = "ssh " + user + "@" + host
+    param ="-X"
+    cmd = "ssh " + param + " " + user + "@" + host
     os.system(cmd)
     pass
 
