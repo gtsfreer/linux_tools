@@ -3,24 +3,23 @@ import os, sys
 
 default_ip = ['192.168.3.', '192.168.', '192.']
 
-def ssh_connect(user, host):
-    param ="-X"
-    cmd = "ssh " + param + " " + user + "@" + host
+def ssh_connect(user, host, password):
+    cmd = "sshpass -p " + password + " ssh -X " + user + "@" + host
     os.system(cmd)
     pass
 
-def ssh_combine(user, part_ip):
+def ssh_combine(user, part_ip, password):
     num = part_ip.count('.')
     if num < 3:
-        return ssh_connect(user, default_ip[num] + part_ip)
+        return ssh_connect(user, default_ip[num] + part_ip, password)
     else:
-        return ssh_connect(user, part_ip)
+        return ssh_connect(user, part_ip, password)
 
 def Main():
     if len(sys.argv) == 2:
-        return ssh_combine('root', sys.argv[1])
+        return ssh_combine('root', sys.argv[1], 'lanyun123')
     if len(sys.argv) == 3:
-        return ssh_combine(sys.argv[1], sys.argv[2])
+        return ssh_combine(sys.argv[1], sys.argv[2], 'lanyun123')
     print "error parameter!"
 
 if __name__ == '__main__':
