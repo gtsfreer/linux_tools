@@ -4,7 +4,7 @@ import os, sys
 default_ip = ['192.168.3.', '192.168.', '192.']
 
 def ssh_connect(user, host, password):
-    cmd = "sshpass -p " + password + " ssh -X " + user + "@" + host
+    cmd = "sshpass -p " + password + " ssh -X -o StrictHostKeyChecking=no " + user + "@" + host
     os.system(cmd)
     pass
 
