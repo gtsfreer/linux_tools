@@ -17,9 +17,9 @@ def ssh_combine(user, part_ip, password):
 
 def Main():
     if len(sys.argv) == 2:
-        return ssh_combine('root', sys.argv[1], 'lanyun123')
+        return ssh_combine('root', sys.argv[1], 'defaultpass')
     if len(sys.argv) == 3:
-        return ssh_combine(sys.argv[1], sys.argv[2], 'lanyun123')
+        return ssh_combine(sys.argv[1], sys.argv[2], 'defaultpass')
     print "error parameter!"
 
 if __name__ == '__main__':
